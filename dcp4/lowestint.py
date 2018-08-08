@@ -28,9 +28,7 @@ class NumFinder(object):
         self.count = 0
         for i in range(len(self.nums)):
             if self.nums[i] <= 0:
-                temp = self.nums[self.count]
-                self.nums[self.count] = self.nums[i]
-                self.nums[i] = temp
+                self.nums[self.count], self.nums[i] = self.nums[i], self.nums[self.count]
                 self.count += 1
 
     def relocate_right(self):
@@ -42,9 +40,7 @@ class NumFinder(object):
                     self.count += 1
                 if i >= len(self.nums) - self.count - 1:
                     break
-                temp = self.nums[-1 - self.count]
-                self.nums[-1 - self.count] = self.nums[i]
-                self.nums[i] = temp
+                self.nums[i], self.nums[-1 - self.count] = self.nums[-1 -self.count], self.nums[i]
                 self.count += 1
 
     def find_int_left(self):
