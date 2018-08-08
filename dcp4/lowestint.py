@@ -81,6 +81,24 @@ class NumFinder(object):
         self.relocate_right()
         return self.find_int_right()
 
+    @property
+    def nums_left(self):
+        return self.missing_int
+
+    @nums_left.setter
+    def nums_left(self, L:list):
+        self.nums = L.copy()
+        return self.process_left()
+
+    @property
+    def nums_right(self):
+        return self.missing_int
+
+    @nums_right.setter
+    def nums_right(self, L:list):
+        self.nums = L.copy()
+        self.process_left()
+
 if __name__ == "__main__":
     L = [3, 4, -1, 2, 1, -2, -3, 0,7]
     x = NumFinder(L.copy())
@@ -90,12 +108,11 @@ if __name__ == "__main__":
     xx = x.process_left()
     print(xx)
     L = [1]
-    x = NumFinder(L.copy())
-    xx = x.process_right()
-    print(xx)
-    x.nums = L.copy()
-    xx = x.process_left()
-    print(xx)
+    x.nums_right = L
+    print(x.nums_right)
+    x.nums_left = L
+    print(x.nums_left)
+    
                 
 
 
