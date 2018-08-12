@@ -11,6 +11,7 @@ You can assume messages are decodable. '001' is not allowed
 """
 
 from collections import deque
+from collections import defaultdict
 
 def map_letters():
     """
@@ -87,10 +88,29 @@ def deserialize_count(input: str):
                 string_list[index] = string[1:]
     return count
 
+#This is the algorithm that was in the solution
+def num_encoding(s: str):
+    """
+    Return the count of possible deserializations of the string
+    """
+    cache = defaultdict(int)
+    cache[len(s)] = 1
+    
+    for i in reversed(range(len(s))):
+        if s[i].startswith('0'):
+            cache[i] = 0
+        elif i == len(s):
+            cache[i] = 1
+        else:
+            if int(s[i:i + 2]) <= 26:
+                cache[i] = cache[i + 2]
+            cache[i] += cache[i + 1]
+    return cache[0]
+
 if __name__ == "__main__":
-    input = '1111'
+    input = '11111243'
     # print(deserialize_count(input))
-    strings, count = deserialize(input)
+    strings, count = deserialize(input) #Not good time or space complexity
     print(f'Strings: {strings}\nCombinations: {count}')
-
-
+    count = num_encoding(input)
+    print(f'Combinations: {count}')
