@@ -22,11 +22,11 @@ def compare(steps, strides):
     time_start = time.clock()
     cache_value = s_cached(steps, strides)
     time_total = (time.clock() - time_start) * 1000
-    # print(f"Cache method - Combos: {cache_value} Time: {time_total:.6}")
+    print(f"Cache method - Combos: {cache_value} Time: {time_total:.6}")
     time_start = time.clock()
     recursion_value = s_recursion(steps, strides)
     time_total2 = (time.clock() - time_start) * 1000
-    # print(f"Recursion - Combos: {recursion_value} Time: {time_total2:.6}")
+    print(f"Recursion - Combos: {recursion_value} Time: {time_total2:.6}")
     return 'cache' if time_total < time_total2 else 'recursion'
 
 steps = 4
@@ -37,7 +37,7 @@ winners = {'cache': 0, 'recursion': 0}
 
 time_start = time.clock()
 for _ in range(100):
-    winners[compare(5, x)] += 1
+    winners[compare(900, x)] += 1
 time_total = time.clock() - time_start
 
 print(f'{winners}\n{time_total:.6}')
