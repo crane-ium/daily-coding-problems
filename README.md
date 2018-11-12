@@ -1,4 +1,5 @@
-#Collection of Daily Coding Problems
-www.dailycodingproblems.com
+# Collection of Daily Coding Problems
+**Stephen Crane**
+**www.dailycodingproblems.com**
 
-    A collection of my practice attemps for my daily coding problem
+A collection of my practice attemps for my daily coding problem
