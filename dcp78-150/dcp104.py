@@ -74,3 +74,4 @@ if __name__ == "__main__":
         n.insert_list(l)
         print(n)
         print(f'Palindrome: ', 'Yes' if is_palindromic(n) else 'No')
+        
