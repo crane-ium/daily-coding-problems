@@ -22,7 +22,25 @@ def is_shifted_one(s1:str, s2:str):
     #eg. 'aaab' vs 'abaa' which will be n^2 time
     return False #Hit end, no match found
 
+def given_solution_one(s1, s2):
+    if(len(s1) != len(s2)):
+        return False
+    for i in range(len(s1)):
+        if(all(s1[(i+j) % len(s1)] == s2[j] for j in range(len(s2)))): #A clean iteration of comparisons, but it's n^2 time
+            return True
+    return False
+
+def given_solution_two(s1, s2):
+    #Since one string is an axis-wrapping versin of the other,
+    #We can complete the wrap by adding a string to itself
+    if len(s1) != len(s2):
+        return False
+
+    return s2 in (s1 + s1) #Still n^2 time
+
 if __name__ == "__main__":
-    s1 = 'abc'
-    s2 = 'bac'
+    s1 = 'abcd'
+    s2 = 'cdab'
     print(f'Shifted? {"Yes" if is_shifted_one(s1, s2) else "No"}')
+    print(f'Shifted? {"Yes" if given_solution_one(s1, s2) else "No"}')
+    print(f'Shifted? {"Yes" if given_solution_two(s1, s2) else "No"}')

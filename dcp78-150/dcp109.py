@@ -11,15 +11,16 @@ def swap_bits(bitlist):
     #The hex of odd bits is 0xaa... and even bits is 0x55... (10101010 and 01010101 respectively)
     oddbits = 0xa
     evenbits = 0x5
-    while(oddbits < bitlist):
+    while(oddbits < bitlist): #Can accomodate any size integer
         oddbits = (oddbits<<4) + 0xa
         evenbits = (evenbits<<4) + 0x5
-    bitlist = (bitlist & oddbits) + (bitlist & evenbits)
+    print(oddbits, evenbits)
+    bitlist = ((bitlist & oddbits)>>1) + ((bitlist & evenbits)<<1)
     return bitlist
 
 def swap_byte(byte):
     #Assuming that the given integer is a byte (unsigned 8bit int)
-    return (byte & 0x55) + (byte & 0xaa)
+    return ((byte & 0x55)<<1) + ((byte & 0xaa)>>1)
 
 if __name__ == "__main__":
     base = 0xe2
